@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CIVE3415: Steady Open Channel Hydraulics | Worked Examples & Lecture Notes</title>
+  <title>CIVE3415: Steady Open Channel Hydraulics | University of Leeds</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -38,18 +38,18 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    .katex-display { margin: 0.6em 0; overflow-x: auto; overflow-y: hidden; padding-bottom: 2px; }
-    .correct-pulse { animation: pulseGreen 1s ease; }
+    .katex-display { margin: 0.5em 0; overflow-x: auto; overflow-y: hidden; padding-bottom: 2px; }
+    .correct-pulse { animation: pulseGreen 0.8s ease; }
     @keyframes pulseGreen {
       0% { transform: scale(1); }
-      50% { transform: scale(1.02); }
+      50% { transform: scale(1.015); }
       100% { transform: scale(1); }
     }
   </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
 
-  <!-- Header & Navigation -->
+  <!-- Header -->
   <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-800/95 backdrop-blur border-b border-slate-200 dark:border-slate-700 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
@@ -63,16 +63,13 @@
           </div>
         </div>
 
-        <!-- Desktop Navigation Tabs -->
+        <!-- Navigation Tabs -->
         <nav class="hidden md:flex items-center space-x-1">
           <button onclick="switchTab('examples')" id="tab-btn-examples" class="tab-btn px-3 py-2 rounded-md text-sm font-medium transition text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/30 flex items-center gap-1.5">
-            <i data-lucide="check-circle-2" class="w-4 h-4"></i> Worked Challenges
-          </button>
-          <button onclick="switchTab('lectures')" id="tab-btn-lectures" class="tab-btn px-3 py-2 rounded-md text-sm font-medium transition text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1.5">
-            <i data-lucide="book-open" class="w-4 h-4"></i> Lecture Modules
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i> Worked Examples (35)
           </button>
           <button onclick="switchTab('equations')" id="tab-btn-equations" class="tab-btn px-3 py-2 rounded-md text-sm font-medium transition text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1.5">
-            <i data-lucide="calculator" class="w-4 h-4"></i> E5 Equation Sheet
+            <i data-lucide="book-open" class="w-4 h-4"></i> E5 Equation Sheet & Table 3
           </button>
           <button onclick="switchTab('solver')" id="tab-btn-solver" class="tab-btn px-3 py-2 rounded-md text-sm font-medium transition text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1.5">
             <i data-lucide="sliders" class="w-4 h-4"></i> Interactive Calculator
@@ -80,7 +77,6 @@
         </nav>
 
         <div class="flex items-center space-x-2">
-          <!-- Dark mode toggle -->
           <button onclick="toggleDarkMode()" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-700 transition" title="Toggle theme">
             <i data-lucide="sun" id="sun-icon" class="w-5 h-5 hidden"></i>
             <i data-lucide="moon" id="moon-icon" class="w-5 h-5"></i>
@@ -90,28 +86,28 @@
     </div>
   </header>
 
-  <!-- Main Content Container -->
+  <!-- Main Container -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
     <!-- ==================== TAB 1: WORKED EXAMPLES ==================== -->
     <div id="tab-examples" class="tab-content block">
       
       <!-- Progress Bar & Challenge Banner -->
-      <div class="mb-6 p-4 rounded-xl bg-gradient-to-r from-blue-900 to-indigo-900 text-white shadow-lg">
+      <div class="mb-6 p-4 rounded-xl bg-gradient-to-r from-blue-900 via-slate-900 to-indigo-950 text-white shadow-lg">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-400/20 text-emerald-300 mb-1 border border-emerald-400/30">
-              <i data-lucide="target" class="w-3.5 h-3.5"></i> Interactive Self-Assessment
+              <i data-lucide="award" class="w-3.5 h-3.5"></i> Full Syllabus Problem Bank (35 Questions)
             </div>
-            <h2 class="text-xl font-bold">Solve First, Verify, Then Reveal Solutions</h2>
+            <h2 class="text-xl font-bold">Self-Assessment Challenge</h2>
             <p class="text-sm text-blue-100 mt-0.5">
-              Enter your final numerical values with accurate decimal precision. Solutions unlock upon correct answers, or through the study bypass.
+              Submit your final numerical values to verify your calculation before unlocking the full worked derivation.
             </p>
           </div>
-          <div class="bg-white/10 backdrop-blur rounded-lg p-3 w-full sm:w-60 border border-white/20">
+          <div class="bg-white/10 backdrop-blur rounded-lg p-3 w-full sm:w-64 border border-white/20">
             <div class="flex justify-between text-xs font-semibold mb-1">
-              <span>Your Progress</span>
-              <span id="progress-text">0 / 12 Solved</span>
+              <span>Overall Progress</span>
+              <span id="progress-text">0 / 35 Solved</span>
             </div>
             <div class="w-full bg-slate-700/50 rounded-full h-2.5 overflow-hidden">
               <div id="progress-bar-fill" class="bg-emerald-400 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -123,225 +119,129 @@
       <!-- Filters & Search -->
       <div class="mb-6 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
         <div class="flex flex-wrap gap-1.5 items-center">
-          <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 mr-1 pl-1">Sections:</span>
-          <button onclick="filterExamples('all')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-brand-600 text-white transition" data-filter="all">All (12)</button>
-          <button onclick="filterExamples('E1')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition" data-filter="E1">E1: Uniform & Critical</button>
-          <button onclick="filterExamples('E2')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition" data-filter="E2">E2: Rapid Transitions & Jumps</button>
-          <button onclick="filterExamples('E3')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition" data-filter="E3">E3: Backwater & GVF</button>
-          <button onclick="filterExamples('E4')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition" data-filter="E4">E4: Flow Transitions</button>
+          <button onclick="filterExamples('all')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-brand-600 text-white transition" data-filter="all">All (35)</button>
+          <button onclick="filterExamples('E1')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition" data-filter="E1">E1: Uniform & Critical (18)</button>
+          <button onclick="filterExamples('E2')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition" data-filter="E2">E2: Jumps & Transitions (7)</button>
+          <button onclick="filterExamples('E3')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition" data-filter="E3">E3: Gradually Varied Flow (5)</button>
+          <button onclick="filterExamples('E4')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition" data-filter="E4">E4: Flow Transitions (5)</button>
         </div>
-        <div class="relative min-w-[240px]">
+        <div class="relative min-w-[260px]">
           <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-2.5"></i>
-          <input type="text" id="exampleSearch" oninput="searchExamples()" placeholder="Search problem (e.g. Manning, trapezoidal, Froude)..." class="w-full pl-9 pr-3 py-1.5 text-sm rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100 placeholder-slate-400" />
+          <input type="text" id="exampleSearch" oninput="searchExamples()" placeholder="Search example ID or keyword..." class="w-full pl-9 pr-3 py-1.5 text-sm rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100 placeholder-slate-400" />
         </div>
       </div>
 
-      <!-- Problem Cards Grid / Container -->
+      <!-- Problem Cards List -->
       <div id="examples-container" class="space-y-6"></div>
     </div>
 
-    <!-- ==================== TAB 2: LECTURE MODULES ==================== -->
-    <div id="tab-lectures" class="tab-content hidden space-y-6">
-      <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Steady Open Channel Hydraulics — Lecture Syllabus</h2>
-        <p class="text-slate-600 dark:text-slate-300">
-          Core theoretical foundations, derivations, and practical design principles for open channel flow engineering.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Module 1 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-brand-500 transition">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300">Module 1</span>
-            <span class="text-xs text-slate-400">Sheet E1</span>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Uniform Flow & Critical Flow Conditions</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
-            Derivation of Chézy and Manning formulae; hydraulic radius definitions; section factor for uniform flow; critical depth criteria where Froude number $Fr = 1$; minimum specific energy derivations for rectangular and trapezoidal flumes.
-          </p>
-          <div class="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg text-xs font-mono text-slate-700 dark:text-slate-300">
-            $$Q = \frac{1}{n} A R^{2/3} S_0^{1/2} \quad \text{and} \quad \frac{Q^2 B}{g A^3} = 1$$
-          </div>
-        </div>
-
-        <!-- Module 2 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-brand-500 transition">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">Module 2</span>
-            <span class="text-xs text-slate-400">Sheet E2</span>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Rapidly Varied Flow: Transitions & Hydraulic Jumps</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
-            Specific energy diagram application over upward bed steps ($\Delta z$) and channel contractions ($B_2 < B_1$). Choking phenomena, choking limits ($B_{\text{min}}$ and $\Delta z_{\text{crit}}$), momentum conservation, Bélanger jump equation, and energy dissipation.
-          </p>
-          <div class="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg text-xs font-mono text-slate-700 dark:text-slate-300">
-            $$y_2 = \frac{y_1}{2}\left(\sqrt{1 + 8Fr_1^2} - 1\right), \quad \Delta E = \frac{(y_2 - y_1)^3}{4 y_1 y_2}$$
-          </div>
-        </div>
-
-        <!-- Module 3 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-brand-500 transition">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300">Module 3</span>
-            <span class="text-xs text-slate-400">Sheet E3</span>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Gradually Varied Flow & Numerical Integration</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
-            Gradually Varied Flow (GVF) dynamic differential equation; classification of surface profiles (M1, M2, M3, S1, S2, S3); upstream vs downstream controls; Direct Step and Standard Step numerical discretisation techniques.
-          </p>
-          <div class="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg text-xs font-mono text-slate-700 dark:text-slate-300">
-            $$\frac{dy}{dx} = \frac{S_0 - S_f}{1 - Fr^2}, \quad \Delta x = \frac{\Delta E_s}{\overline{S_0 - S_f}}$$
-          </div>
-        </div>
-
-        <!-- Module 4 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-brand-500 transition">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300">Module 4</span>
-            <span class="text-xs text-slate-400">Sheet E4</span>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Long Channel Transitions & Jump Locations</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
-            Coupled reach transitions across mild and steep slopes; determination of control depth locations; hydraulic jump sequencing between steep-to-mild and mild-to-steep channel junctions.
-          </p>
-          <div class="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg text-xs font-mono text-slate-700 dark:text-slate-300">
-            $$y_{\text{seq}} = \frac{y_n}{2}\left(\sqrt{1+8Fr^2}-1\right) \gtrless y_{n,\text{reach 2}}$$
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== TAB 3: E5 EQUATION SHEET ==================== -->
+    <!-- ==================== TAB 2: E5 EQUATIONS & TABLE 3 ==================== -->
     <div id="tab-equations" class="tab-content hidden space-y-6">
       <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
         <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Section E5: Relevant Equations of Steady Open Channel Flow</h2>
         <p class="text-sm text-slate-600 dark:text-slate-300">
-          Official reference handbook from the University of Leeds Water Engineering series.
+          Official formulary and channel geometric properties from the University of Leeds Water Engineering handbook.
         </p>
       </div>
 
+      <!-- Table 3 Section Properties -->
+      <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-x-auto">
+        <h3 class="font-bold text-base text-brand-600 dark:text-brand-400 mb-3 border-b pb-2 border-slate-100 dark:border-slate-700">Table 3: Geometric Properties of Standard Channel Sections</h3>
+        <table class="min-w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">
+              <th class="py-2 pr-4 font-semibold">Property</th>
+              <th class="py-2 px-4 font-semibold">Rectangle</th>
+              <th class="py-2 px-4 font-semibold">Trapezoid</th>
+              <th class="py-2 pl-4 font-semibold">Circle ($\phi$ in radians)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+            <tr>
+              <td class="py-2 pr-4 font-medium text-slate-700 dark:text-slate-300">Area ($A$)</td>
+              <td class="py-2 px-4 font-mono">$b y$</td>
+              <td class="py-2 px-4 font-mono">$(b + s y)y$</td>
+              <td class="py-2 pl-4 font-mono">$\frac{1}{8}(\phi - \sin \phi) D^2$</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4 font-medium text-slate-700 dark:text-slate-300">Wetted Perimeter ($P$)</td>
+              <td class="py-2 px-4 font-mono">$b + 2y$</td>
+              <td class="py-2 px-4 font-mono">$b + 2y\sqrt{1+s^2}$</td>
+              <td class="py-2 pl-4 font-mono">$\frac{1}{2}\phi D$</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4 font-medium text-slate-700 dark:text-slate-300">Top Width ($B$)</td>
+              <td class="py-2 px-4 font-mono">$b$</td>
+              <td class="py-2 px-4 font-mono">$b + 2s y$</td>
+              <td class="py-2 pl-4 font-mono">$(\sin \frac{\phi}{2}) D$</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4 font-medium text-slate-700 dark:text-slate-300">Hydraulic Radius ($R = A/P$)</td>
+              <td class="py-2 px-4 font-mono">$\frac{b y}{b + 2y}$</td>
+              <td class="py-2 px-4 font-mono">$\frac{(b + s y)y}{b + 2y\sqrt{1+s^2}}$</td>
+              <td class="py-2 pl-4 font-mono">$\frac{1}{4}(1 - \frac{\sin \phi}{\phi}) D$</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4 font-medium text-slate-700 dark:text-slate-300">Hydraulic Depth ($D_m = A/B$)</td>
+              <td class="py-2 px-4 font-mono">$y$</td>
+              <td class="py-2 px-4 font-mono">$\frac{(b + s y)y}{b + 2s y}$</td>
+              <td class="py-2 pl-4 font-mono">$\frac{1}{8}\frac{\phi - \sin \phi}{\sin(\phi/2)} D$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- Uniform Flow -->
-        <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <h3 class="font-bold text-base text-brand-600 dark:text-brand-400 mb-3 border-b pb-2 border-slate-100 dark:border-slate-700">1. Uniform Flow Equations</h3>
-          <div class="space-y-4 text-sm">
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Chézy Equation:</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$Q = A C \sqrt{R S_0} \quad \text{where } R = \frac{A}{P}$$
-              </div>
-            </div>
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Manning's Formula:</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$Q = \frac{1}{n} A R^{2/3} S_0^{1/2}$$
-              </div>
-            </div>
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Wide Rectangular Channel ($R \approx y$):</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$q = \frac{Q}{b} = \frac{1}{n} y_n^{5/3} S_0^{1/2} \implies y_n = \left(\frac{q n}{S_0^{1/2}}\right)^{3/5}$$
-              </div>
-            </div>
-          </div>
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+          <h3 class="font-bold text-base text-brand-600 dark:text-brand-400 border-b pb-2 border-slate-100 dark:border-slate-700">1. Uniform Flow</h3>
+          <p class="text-sm">Chézy: $Q = A C \sqrt{R S_o}$ (Eq-1) | Manning: $Q = \frac{1}{n} A R^{2/3} S_o^{1/2}$ (Eq-2)</p>
+          <p class="text-sm">Wide Channel Normal Depth: $y_n = \left(\frac{q n}{S_o^{1/2}}\right)^{3/5} = \left(\frac{q}{C S_o^{1/2}}\right)^{2/3}$</p>
         </div>
 
-        <!-- Critical Flow & Froude -->
-        <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <h3 class="font-bold text-base text-brand-600 dark:text-brand-400 mb-3 border-b pb-2 border-slate-100 dark:border-slate-700">2. Critical Flow & Froude Number</h3>
-          <div class="space-y-4 text-sm">
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">General Cross-Section:</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$Fr = \frac{V}{\sqrt{g A / B}} = \frac{Q}{A\sqrt{g A / B}}, \quad Fr^2 = \frac{Q^2 B}{g A^3}$$
-              </div>
-            </div>
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Rectangular Channel ($Fr = 1$):</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$y_c = \left(\frac{q^2}{g}\right)^{1/3}, \quad E_{sc} = \frac{3}{2}y_c \iff y_c = \frac{2}{3}E_{sc}$$
-              </div>
-            </div>
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Critical Slope:</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$S_c = \frac{g n^2}{y_c^{1/3}}$$
-              </div>
-            </div>
-          </div>
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+          <h3 class="font-bold text-base text-brand-600 dark:text-brand-400 border-b pb-2 border-slate-100 dark:border-slate-700">2. Critical Conditions & Slope</h3>
+          <p class="text-sm">Critical criterion: $\frac{Q^2 B}{g A^3} = 1$ | Rectangular: $y_c = \left(\frac{q^2}{g}\right)^{1/3}, \quad E_{sc} = \frac{3}{2} y_c$</p>
+          <p class="text-sm">Critical slope: $S_{oc} = \frac{g n^2 P_c}{B_c R_c^{1/3}}$, and for wide channels $S_{oc} = \frac{g n^2}{y_c^{1/3}}$</p>
         </div>
 
-        <!-- Hydraulic Jump -->
-        <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <h3 class="font-bold text-base text-brand-600 dark:text-brand-400 mb-3 border-b pb-2 border-slate-100 dark:border-slate-700">3. Hydraulic Jump (Bélanger Equation)</h3>
-          <div class="space-y-4 text-sm">
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Conjugate (Sequent) Depths:</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$y_2 = \frac{y_1}{2}\left(\sqrt{1 + 8Fr_1^2} - 1\right), \quad y_1 = \frac{y_2}{2}\left(\sqrt{1 + 8Fr_2^2} - 1\right)$$
-              </div>
-            </div>
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Head Loss Across Jump:</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$\Delta E = E_1 - E_2 = \frac{(y_2 - y_1)^3}{4 y_1 y_2}$$
-              </div>
-            </div>
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Power Dissipated:</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$P = \rho g Q \Delta E \quad \text{(Watts)}$$
-              </div>
-            </div>
-          </div>
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+          <h3 class="font-bold text-base text-brand-600 dark:text-brand-400 border-b pb-2 border-slate-100 dark:border-slate-700">3. Hydraulic Jump</h3>
+          <p class="text-sm">Sequent depth: $y_2 = \frac{y_1}{2}\left(\sqrt{1 + 8Fr_1^2} - 1\right)$ (Eq-39)</p>
+          <p class="text-sm">Energy dissipated: $\Delta E = \frac{(y_2 - y_1)^3}{4 y_1 y_2}$ (Eq-41) | Power: $P = \rho g Q \Delta E$</p>
         </div>
 
-        <!-- Gradually Varied Flow -->
-        <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <h3 class="font-bold text-base text-brand-600 dark:text-brand-400 mb-3 border-b pb-2 border-slate-100 dark:border-slate-700">4. Gradually Varied Flow (GVF)</h3>
-          <div class="space-y-4 text-sm">
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Dynamic GVF Equation:</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$\frac{dy}{dx} = \frac{S_0 - S_f}{1 - Fr^2} \quad \text{where } S_f = \frac{n^2 Q^2}{A^2 R^{4/3}}$$
-              </div>
-            </div>
-            <div>
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Direct Step Method:</span>
-              <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-1 font-mono text-xs">
-                $$\Delta x = \frac{E_{s2} - E_{s1}}{S_0 - \frac{S_{f1} + S_{f2}}{2}}$$
-              </div>
-            </div>
-          </div>
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+          <h3 class="font-bold text-base text-brand-600 dark:text-brand-400 border-b pb-2 border-slate-100 dark:border-slate-700">4. Gradually Varied Flow (GVF)</h3>
+          <p class="text-sm">Dynamic equation: $\frac{dy}{dx} = \frac{S_o - S_f}{1 - Fr^2}$ (Eq-42)</p>
+          <p class="text-sm">Direct step: $\Delta x = \Delta y \left(\frac{1 - Fr^2}{S_o - S_f}\right)_{\text{mean}}$</p>
         </div>
       </div>
     </div>
 
-    <!-- ==================== TAB 4: INTERACTIVE CALCULATOR ==================== -->
+    <!-- ==================== TAB 3: INTERACTIVE CALCULATOR ==================== -->
     <div id="tab-solver" class="tab-content hidden space-y-6">
       <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
         <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Rectangular Channel Hydraulic Calculator</h2>
         <p class="text-slate-600 dark:text-slate-300 text-sm">
-          Solve critical parameters ($y_c, y_n, Fr$, Sequent Depth $y_2$) interactively for verification.
+          Compute normal depth $y_n$, critical depth $y_c$, Froude number $Fr$, and conjugate sequent depth $y_2$ dynamically.
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
           <div>
             <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Discharge $Q$ (m³/s)</label>
-            <input type="number" id="calc-q" value="12.0" step="0.1" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100" oninput="solveHydraulics()" />
+            <input type="number" id="calc-q" value="5.3" step="0.1" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100" oninput="solveHydraulics()" />
           </div>
           <div>
             <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Bed Width $b$ (m)</label>
-            <input type="number" id="calc-b" value="4.0" step="0.1" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100" oninput="solveHydraulics()" />
+            <input type="number" id="calc-b" value="3.0" step="0.1" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100" oninput="solveHydraulics()" />
           </div>
           <div>
             <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Bed Slope $S_0$</label>
-            <input type="number" id="calc-so" value="0.002" step="0.0001" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100" oninput="solveHydraulics()" />
+            <input type="number" id="calc-so" value="0.01" step="0.0005" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100" oninput="solveHydraulics()" />
           </div>
           <div>
             <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Manning's $n$</label>
-            <input type="number" id="calc-n" value="0.015" step="0.001" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100" oninput="solveHydraulics()" />
+            <input type="number" id="calc-n" value="0.011" step="0.001" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100" oninput="solveHydraulics()" />
           </div>
         </div>
 
@@ -371,250 +271,564 @@
   <!-- Footer -->
   <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-6 bg-white dark:bg-slate-900 text-center text-xs text-slate-500">
     <p>University of Leeds • School of Civil Engineering • CIVE3415 Steady Open Channel Hydraulics</p>
-    <p class="mt-1">Built for GitHub Pages deployment with client-side LaTeX verification</p>
+    <p class="mt-1">Prof Andrew Sleigh (Solutions 2024) • Full Interactive Suite</p>
   </footer>
 
-  <!-- ==================== JAVASCRIPT LOGIC & DATA ==================== -->
+  <!-- ==================== JAVASCRIPT & FULL DATASET ==================== -->
   <script>
-    // Database of Examples from Leeds Example Sheets (E1, E2, E3, E4)
+    // Complete 35 Problems Database exactly transcribed from LaTeX document
     const examplesData = [
+      // ---------------- SECTION E1 ----------------
       {
         id: "E1.1",
         section: "E1",
-        title: "Normal and Critical Depth in a Rectangular Flume",
-        statement: "A rectangular channel is $5\\text{ m}$ wide, has a bed slope $S_0 = 1\\text{ in } 1000$ ($0.001$), and Manning's roughness coefficient $n = 0.012$. Determine the normal depth $y_n$ and the critical depth $y_c$ when the discharge is $Q = 10\\text{ m}^3/\\text{s}$.",
+        title: "Normal and Critical Depth in a Rectangular Channel",
+        statement: "A rectangular channel is $3.0\\,\\text{m}$ wide, has a $0.01$ slope, flow rate of $5.3\\,\\text{m}^3/\\text{s}$, and $n = 0.011$. Find its normal depth $y_n$ and critical depth $y_c$.",
         inputs: [
-          { key: "yn", label: "Normal depth yn (m)", target: 1.05, tol: 0.04, unit: "m" },
-          { key: "yc", label: "Critical depth yc (m)", target: 0.74, tol: 0.03, unit: "m" }
+          { key: "yn", label: "Normal depth yn (m)", target: 0.412, tol: 0.015, unit: "m" },
+          { key: "yc", label: "Critical depth yc (m)", target: 0.683, tol: 0.015, unit: "m" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p><strong>1. Critical Depth ($y_c$):</strong></p>
-          <p>For a rectangular channel of width $b = 5\\text{ m}$, unit discharge $q = Q/b = 10 / 5 = 2.0\\text{ m}^2/\\text{s}$.</p>
-          $$y_c = \\left(\\frac{q^2}{g}\\right)^{1/3} = \\left(\\frac{2.0^2}{9.81}\\right)^{1/3} = (0.4077)^{1/3} = 0.741\\text{ m}$$
-          <p class="mt-3"><strong>2. Normal Depth ($y_n$):</strong></p>
-          <p>Using Manning's equation: $Q = \\frac{1}{n} A R^{2/3} S_0^{1/2}$, where $A = b y_n = 5 y_n$ and $P = b + 2y_n = 5 + 2y_n$:</p>
-          $$10 = \\frac{1}{0.012} (5y_n) \\left(\\frac{5y_n}{5 + 2y_n}\\right)^{2/3} (0.001)^{1/2}$$
-          $$\\frac{10 \\times 0.012}{\\sqrt{0.001}} = 3.7947 = \\frac{(5 y_n)^{5/3}}{(5 + 2y_n)^{2/3}}$$
-          <p>Solving iteratively yields: <strong>$y_n \\approx 1.052\\text{ m}$</strong>.</p>
-          <p class="text-xs text-slate-500 mt-2">Since $y_n > y_c$ ($1.052\\text{ m} > 0.741\\text{ m}$), the channel slope is <em>mild</em>.</p>
+          <p>For a rectangular channel of base width $b$ and depth $y$:</p>
+          $$A = b y, \\quad P = b + 2y \\implies R = \\frac{A}{P} = \\frac{b y}{b + 2y}$$
+          <p>The Manning equation becomes:</p>
+          $$Q = \\frac{1}{n} \\frac{(b y_n)^{5/3}}{(b + 2y_n)^{2/3}} S_o^{1/2}$$
+          <p>Solving for $y_n$ iteratively gives: <strong>$y_n = 0.412\\,\\text{m}$</strong>.</p>
+          <p class="mt-2">At critical depth $y_c$, Froude number $Fr = 1$:</p>
+          $$1 = \\frac{Q^2 B}{g A^3} = \\frac{Q^2}{g B^2 y_c^3} \\implies y_c = \\left( \\frac{Q^2}{g B^2} \\right)^{1/3} = \\left( \\frac{5.3^2}{9.81 \\times 3.0^2} \\right)^{1/3} = 0.683\\,\\text{m}$$
         `
       },
       {
         id: "E1.2",
         section: "E1",
-        title: "Minimum Specific Energy in a Rectangular Channel",
-        statement: "Water flows at $Q = 14\\text{ m}^3/\\text{s}$ through a rectangular channel of width $B = 3.5\\text{ m}$. Calculate the critical depth $y_c$ and the minimum specific energy $E_{sc}$.",
+        title: "Minimum Channel Width for Sub-critical Flow",
+        statement: "Water flows in a long rectangular channel at a depth of $1.22\\,\\text{m}$ and discharge of $Q = 5.66\\,\\text{m}^3/\\text{s}$. Determine the minimum channel width if the channel is to be sub-critical.",
         inputs: [
-          { key: "yc", label: "Critical depth yc (m)", target: 1.18, tol: 0.04, unit: "m" },
-          { key: "Esc", label: "Min Specific Energy Esc (m)", target: 1.77, tol: 0.05, unit: "m" }
+          { key: "B", label: "Minimum width B (m)", target: 1.34, tol: 0.03, unit: "m" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>Unit discharge: $q = Q/B = 14.0 / 3.5 = 4.0\\text{ m}^2/\\text{s}$.</p>
-          $$y_c = \\left(\\frac{q^2}{g}\\right)^{1/3} = \\left(\\frac{4.0^2}{9.81}\\right)^{1/3} = (1.631)^{1/3} = 1.177\\text{ m}$$
-          <p class="mt-2">For a rectangular flume, minimum specific energy relates directly to critical depth by:</p>
-          $$E_{sc} = \\frac{3}{2} y_c = 1.5 \\times 1.177 = 1.766\\text{ m}$$
+          <p>For sub-critical flow, the critical depth represents the limiting condition ($y_c = 1.22\\,\\text{m}$). Setting $Fr = 1$:</p>
+          $$1 = \\frac{Q^2}{g B^2 y_c^3} \\implies B = \\left( \\frac{Q^2}{g y_c^3} \\right)^{1/2} = \\left( \\frac{5.66^2}{9.81 \\times 1.22^3} \\right)^{1/2} = 1.34\\,\\text{m}$$
+        `
+      },
+      {
+        id: "E1.3",
+        section: "E1",
+        title: "Slopes and Critical Parameters for Rectangular Channel",
+        statement: "A rectangular channel has bottom width $B = 8\\,\\text{m}$ and Manning's $n = 0.025$.<br>(a) Determine slope to give $y_n = 2\\,\\text{m}$ when $Q = 12\\,\\text{m}^3/\\text{s}$.<br>(b) Determine critical slope $S_{oc}$ and critical depth $y_c$ when $Q = 12\\,\\text{m}^3/\\text{s}$.<br>(c) Determine critical slope to give $y_c = 1.5\\,\\text{m}$ and compute the corresponding discharge $Q$.",
+        inputs: [
+          { key: "So", label: "(a) Bed slope So", target: 0.00024, tol: 0.00003, unit: "" },
+          { key: "yc", label: "(b) Critical depth yc (m)", target: 0.612, tol: 0.02, unit: "m" },
+          { key: "Soc", label: "(b) Critical slope Soc", target: 0.00872, tol: 0.0004, unit: "" },
+          { key: "Qc", label: "(c) Discharge Q (m³/s)", target: 46.03, tol: 1.0, unit: "m³/s" },
+          { key: "Soc2", label: "(c) Critical slope Soc", target: 0.00818, tol: 0.0004, unit: "" }
+        ],
+        solution: `
+          <p><strong>(a)</strong> $A = 16\\,\\text{m}^2$, $P = 12\\,\\text{m}$, $R = 1.333\\,\\text{m}$.</p>
+          $$S_o = \\left( \\frac{Q n}{A R^{2/3}} \\right)^2 = \\left( \\frac{12 \\times 0.025}{16 \\times (1.333)^{2/3}} \\right)^2 = 0.00024 \\quad (1 \\text{ in } 4167)$$
+          <p class="mt-2"><strong>(b)</strong> $y_c = (Q^2 / (b^2 g))^{1/3} = (12^2 / (64 \\times 9.81))^{1/3} = 0.612\\,\\text{m}$.</p>
+          $$S_{oc} = \\frac{g n^2 P_c}{B_c R_c^{1/3}} = 0.00872 \\quad (1 \\text{ in } 115)$$
+          <p class="mt-2"><strong>(c)</strong> $Q = \\sqrt{g b^2 y_c^3} = \\sqrt{9.81 \\times 8^2 \\times 1.5^3} = 46.03\\,\\text{m}^3/\\text{s}$.</p>
+          $$S_{oc} = \\left( \\frac{Q n}{A_c R_c^{2/3}} \\right)^2 = 0.00818 \\quad (1 \\text{ in } 122)$$
         `
       },
       {
         id: "E1.4",
         section: "E1",
-        title: "Critical Depth in a Trapezoidal Channel",
-        statement: "A trapezoidal channel has base width $b = 3.0\\text{ m}$, side slope $s = 1.5$ (1 vertical to 1.5 horizontal), and discharge $Q = 12\\text{ m}^3/\\text{s}$. Determine the critical depth $y_c$.",
+        title: "Critical Depth, Velocity, and Slope in a Trapezoidal Channel",
+        statement: "For a trapezoidal channel with base width $b = 3.0\\,\\text{m}$, Manning's $n = 0.025$, and side slope $s = 2$ ($1\\text{V}:2\\text{H}$), calculate critical depth $y_c$, critical velocity $V_c$, and critical slope $S_{oc}$ if $Q = 10\\,\\text{m}^3/\\text{s}$.",
         inputs: [
-          { key: "yc", label: "Critical depth yc (m)", target: 0.99, tol: 0.04, unit: "m" }
+          { key: "yc", label: "yc (m)", target: 0.855, tol: 0.02, unit: "m" },
+          { key: "vc", label: "Vc (m/s)", target: 2.483, tol: 0.05, unit: "m/s" },
+          { key: "soc", label: "Soc", target: 0.00777, tol: 0.0004, unit: "" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>For a trapezoidal cross-section with side slope $s=1.5$:</p>
-          $$A = (b + s y)y = (3 + 1.5y)y$$
-          $$B = b + 2 s y = 3 + 3y$$
-          <p>At critical condition $Fr = 1$, thus:</p>
-          $$\\frac{Q^2 B}{g A^3} = 1 \\implies \\frac{12^2 (3 + 3 y_c)}{9.81 \\left[(3 + 1.5 y_c)y_c\\right]^3} = 1$$
-          <p>Solving by trial and error or Newton's method:</p>
-          <ul class="list-disc pl-5 my-2 space-y-1">
-            <li>Try $y = 1.0\\text{ m} \\implies A = 4.5\\text{ m}^2, B = 6.0\\text{ m} \\implies \\frac{144 \\times 6}{9.81 \\times 4.5^3} = 0.967$</li>
-            <li>Exact root gives: <strong>$y_c \\approx 0.992\\text{ m}$</strong></li>
-          </ul>
+          <p>Setting $Fr^2 = \\frac{Q^2 B}{g A^3} = 1$ where $A = y(3 + 2y)$ and $B = 3 + 4y$ yields $y_c = 0.855\\,\\text{m}$.</p>
+          <p>$A_c = 0.855(3 + 2 \\times 0.855) = 4.027\\,\\text{m}^2 \\implies V_c = 10 / 4.027 = 2.483\\,\\text{m/s}$.</p>
+          $$S_{oc} = \\frac{g n^2 P_c}{B_c R_c^{1/3}} = \\frac{9.81 \\times 0.025^2 \\times 6.823}{6.420 \\times 0.590^{1/3}} = 0.00777 \\quad (1 \\text{ in } 129)$$
         `
       },
       {
         id: "E1.5",
         section: "E1",
-        title: "Normal Depth via Manning in a Trapezoidal Channel",
-        statement: "A trapezoidal channel with $b = 4.0\\text{ m}$, side slope $s = 2.0$, bed slope $S_0 = 0.001$, and $n = 0.025$ carries $Q = 15\\text{ m}^3/\\text{s}$. Determine the normal depth $y_n$.",
+        title: "Specific Energy and Flow Regime in a Wide Channel",
+        statement: "A rectangular channel $9\\,\\text{m}$ wide carries $7.6\\,\\text{m}^3/\\text{s}$ at $1.0\\,\\text{m}$ depth. Work out specific energy $E_s$ and regime.",
         inputs: [
-          { key: "yn", label: "Normal depth yn (m)", target: 1.48, tol: 0.05, unit: "m" }
+          { key: "Es", label: "Specific Energy Es (m)", target: 1.036, tol: 0.02, unit: "m" },
+          { key: "Fr", label: "Froude number Fr", target: 0.27, tol: 0.03, unit: "" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>Area $A = (4 + 2 y_n)y_n$ and wetted perimeter $P = 4 + 2 y_n\\sqrt{1 + 2^2} = 4 + 2\\sqrt{5} y_n = 4 + 4.472 y_n$.</p>
-          $$Q = \\frac{1}{n} \\frac{A^{5/3}}{P^{2/3}} S_0^{1/2}$$
-          $$\\frac{15 \\times 0.025}{\\sqrt{0.001}} = 11.8585 = \\frac{[(4 + 2y_n)y_n]^{5/3}}{(4 + 4.472 y_n)^{2/3}}$$
-          <p>Solving numerically gives: <strong>$y_n \\approx 1.481\\text{ m}$</strong>.</p>
+          <p>$V = Q / (b y) = 7.6 / (9 \\times 1) = 0.844\\,\\text{m/s}$.</p>
+          $$E_s = y + \\frac{V^2}{2g} = 1.0 + \\frac{0.844^2}{2 \\times 9.81} = 1.036\\,\\text{m}$$
+          $$Fr = \\frac{V}{\\sqrt{g y}} = \\frac{0.844}{\\sqrt{9.81 \\times 1.0}} = 0.27 < 1.0 \\implies \\text{Sub-critical flow}$$
+        `
+      },
+      {
+        id: "E1.6",
+        section: "E1",
+        title: "Comparative Froude Numbers for Two Rivers",
+        statement: "River 1: $Q = 130\\,\\text{m}^3/\\text{s}$, $V = 1.6\\,\\text{m/s}$, $B = 80\\,\\text{m}$. River 2: $Q = 1530\\,\\text{m}^3/\\text{s}$, $V = 5.6\\,\\text{m/s}$, $B = 90\\,\\text{m}$. Determine the Froude numbers $Fr_1$ and $Fr_2$.",
+        inputs: [
+          { key: "fr1", label: "River 1 Fr", target: 0.712, tol: 0.03, unit: "" },
+          { key: "fr2", label: "River 2 Fr", target: 1.013, tol: 0.03, unit: "" }
+        ],
+        solution: `
+          <p>River 1: $A = 130 / 1.6 = 81.25\\,\\text{m}^2 \\implies Fr^2 = \\frac{130^2 \\times 80}{9.81 \\times 81.25^3} = 0.507 \\implies Fr_1 = 0.712 < 1$ (Sub-critical).</p>
+          <p>River 2: $A = 1530 / 5.6 = 273.21\\,\\text{m}^2 \\implies Fr^2 = \\frac{1530^2 \\times 90}{9.81 \\times 273.21^3} = 1.027 \\implies Fr_2 = 1.013 > 1$ (Super-critical).</p>
+        `
+      },
+      {
+        id: "E1.7",
+        section: "E1",
+        title: "Uniform Velocity and Discharge in a Trapezoidal Flume",
+        statement: "Trapezoidal channel: $S_o = 0.0009$, $n = 0.013$, $b = 2.5\\,\\text{m}$, side slopes $1:2$ ($s=2$). Find velocity $V$ and discharge $Q$ at normal depth $y_n = 1.8\\,\\text{m}$.",
+        inputs: [
+          { key: "V", label: "Velocity V (m/s)", target: 2.37, tol: 0.06, unit: "m/s" },
+          { key: "Q", label: "Discharge Q (m³/s)", target: 26.01, tol: 0.5, unit: "m³/s" }
+        ],
+        solution: `
+          <p>$A = 1.8(2.5 + 1.8 \\times 2) = 10.98\\,\\text{m}^2$, $P = 2.5 + 2 \\times 1.8 \\sqrt{5} = 10.55\\,\\text{m} \\implies R = 1.04\\,\\text{m}$.</p>
+          $$Q = \\frac{1}{0.013} \\times 10.98 \\times (1.04)^{2/3} \\times (0.0009)^{1/2} = 26.01\\,\\text{m}^3/\\text{s}, \\quad V = \\frac{26.01}{10.98} = 2.37\\,\\text{m/s}$$
+        `
+      },
+      {
+        id: "E1.8",
+        section: "E1",
+        title: "Normal Depth on Steep Slope Trapezoidal Channel",
+        statement: "Trapezoidal channel: $S_o = 1/40$, $n = 0.016$, $b = 6.0\\,\\text{m}$, side slopes $1:3$ ($s=3$). Find $y_n$ for $Q = 42.3\\,\\text{m}^3/\\text{s}$.",
+        inputs: [
+          { key: "yn", label: "Normal depth yn (m)", target: 0.75, tol: 0.02, unit: "m" }
+        ],
+        solution: `
+          <p>Using Manning's equation $Q = \\frac{1}{n} A R^{2/3} S_o^{1/2}$ with $A = y(6 + 3y)$ and $P = 6 + 2y\\sqrt{10}$.</p>
+          <p>Iterating yields: <strong>$y_n = 0.75\\,\\text{m}$</strong>.</p>
+        `
+      },
+      {
+        id: "E1.9",
+        section: "E1",
+        title: "Super-critical Flow and Critical Slope Determination",
+        statement: "Rectangular channel $b = 4.6\\,\\text{m}$, $Q = 11.3\\,\\text{m}^3/\\text{s}$, $S_o = 1/100$, $n = 0.012$. Determine Froude number $Fr$ and critical slope $S_{oc}$.",
+        inputs: [
+          { key: "Fr", label: "Froude number Fr", target: 2.1, tol: 0.1, unit: "" },
+          { key: "Soc", label: "Critical slope Soc", target: 0.002268, tol: 0.0001, unit: "" }
+        ],
+        solution: `
+          <p>Iterating Manning's equation yields $y_n = 0.521\\,\\text{m}$. Then $A = 2.34\\,\\text{m}^2$, $V = 4.71\\,\\text{m/s}$.</p>
+          $$Fr = \\frac{V}{\\sqrt{g (A/B)}} = \\frac{4.71}{\\sqrt{9.81 \\times 0.521}} = 2.1 > 1 \\implies \\text{Super-critical}$$
+          <p>Critical depth $y_c = (Q^2 / (g b^2))^{1/3} = 0.85\\,\\text{m}$. At critical condition: $A_c = 3.91\\,\\text{m}^2, P_c = 6.30\\,\\text{m}, R_c = 0.62\\,\\text{m}$.</p>
+          $$S_{oc} = \\frac{Q^2 n^2}{A_c^2 R_c^{4/3}} = 0.002268 \\quad (1 \\text{ in } 440)$$
+        `
+      },
+      {
+        id: "E1.10",
+        section: "E1",
+        title: "Compound Channel Flow Distribution and Correction Factors",
+        statement: "Compound channel: main channel bed $b = 10\\,\\text{m}$, side slopes $2.0\\,\\text{m}$ horizontal over $4.5\\,\\text{m}$ vertical ($s_2 = 0.444$), bank height $4.5\\,\\text{m}$. Flood plains on each side have width $7.0\\,\\text{m}$. $S_o = 0.0009$. Roughness: $n_1 = n_3 = 0.035$ (floodplains), $n_2 = 0.025$ (main channel). Find $y_n$ for $Q = 197\\,\\text{m}^3/\\text{s}$, and calculate $\\alpha$ and $\\beta$.",
+        inputs: [
+          { key: "yn", label: "Normal depth yn (m)", target: 5.507, tol: 0.05, unit: "m" },
+          { key: "alpha", label: "Energy factor α", target: 1.23, tol: 0.03, unit: "" },
+          { key: "beta", label: "Momentum factor β", target: 1.09, tol: 0.03, unit: "" }
+        ],
+        solution: `
+          <p>Let floodplain depth be $y_{\\text{flood}} = y - 4.5$. Total discharge is $Q(y) = 2 Q_1(y) + Q_2(y)$.</p>
+          <p>Solving iteratively gives: $y_n = 5.507\\,\\text{m} \\implies y_{\\text{flood}} = 1.007\\,\\text{m}$.</p>
+          <p>Subsection values: $A_1 = A_3 = 7.050\\,\\text{m}^2$, $A_2 = 68.10\\,\\text{m}^2$, $Q_1 = Q_3 = 5.551\\,\\text{m}^3/\\text{s}$, $Q_2 = 185.897\\,\\text{m}^3/\\text{s}$.</p>
+          <p>Mean velocity $\\bar{V} = 197 / (2 \\times 7.05 + 68.10) = 2.397\\,\\text{m/s}$.</p>
+          $$\\alpha = \\frac{\\sum V_i^3 A_i}{\\bar{V}^3 A} = 1.230, \\quad \\beta = \\frac{\\sum V_i^2 A_i}{\\bar{V}^2 A} = 1.093$$
+        `
+      },
+      {
+        id: "E1.11",
+        section: "E1",
+        title: "Floodplain Encroachment Optimization",
+        statement: "Reduce floodplain width symmetrically in E1.10 such that depth increases by at most $0.15\\,\\text{m}$ for $Q = 197\\,\\text{m}^3/\\text{s}$. Find minimum total width $B$.",
+        inputs: [
+          { key: "B", label: "Total width B (m)", target: 16.157, tol: 0.1, unit: "m" }
+        ],
+        solution: `
+          <p>Target normal depth: $y_n = 5.507 + 0.15 = 5.657\\,\\text{m}$ ($y_{\\text{flood}} = 1.157\\,\\text{m}$).</p>
+          <p>$A_2 = 70.20\\,\\text{m}^2, P_2 = 19.85\\,\\text{m} \\implies Q_2 = 195.538\\,\\text{m}^3/\\text{s}$.</p>
+          <p>The floodplains carry $Q_1 + Q_3 = 197 - 195.538 = 1.462\\,\\text{m}^3/\\text{s}$.</p>
+          <p>Solving gives $B_{\\text{flood}} = 1.079\\,\\text{m} \\implies B = 10 + 2(2.0) + 2(1.079) = 16.157\\,\\text{m}$.</p>
+        `
+      },
+      {
+        id: "E1.12",
+        section: "E1",
+        title: "Compound River Cross-Section Flow",
+        statement: "Compound river cross-section: $S_o = 2 \\times 10^{-4}$, $n_1 = n_2 = n_3 = 0.02$, side slopes $s_1 = s_2 = s_3 = 1$. Bed widths $B_1 = 3\\,\\text{m}$, $B_2 = 5\\,\\text{m}$, $B_3 = 4\\,\\text{m}$. Main channel depth $y_{\\text{main}} = 3.0\\,\\text{m}$. Determine discharge for $y_n = 4.5\\,\\text{m}$.",
+        inputs: [
+          { key: "Q", label: "Total discharge Q (m³/s)", target: 69.42, tol: 0.8, unit: "m³/s" }
+        ],
+        solution: `
+          <p>Depth over banks: $y_1 = y_3 = 4.5 - 3.0 = 1.5\\,\\text{m}$.</p>
+          <p>$A_1 = 5.625\\,\\text{m}^2, P_1 = 5.12\\,\\text{m} \\implies Q_1 = 4.234\\,\\text{m}^3/\\text{s}$</p>
+          <p>$A_2 = 40.5\\,\\text{m}^2, P_2 = 13.49\\,\\text{m} \\implies Q_2 = 59.612\\,\\text{m}^3/\\text{s}$</p>
+          <p>$A_3 = 7.125\\,\\text{m}^2, P_3 = 6.12\\,\\text{m} \\implies Q_3 = 5.575\\,\\text{m}^3/\\text{s}$</p>
+          $$Q = Q_1 + Q_2 + Q_3 = 4.234 + 59.612 + 5.575 = 69.421\\,\\text{m}^3/\\text{s}$$
+        `
+      },
+      {
+        id: "E1.13",
+        section: "E1",
+        title: "Discharge Scaling with Bed Slope",
+        statement: "For the channel of E1.12, calculate discharge if $S_o = 0.002$ with all other dimensions unchanged.",
+        inputs: [
+          { key: "Q", label: "Scaled discharge Q (m³/s)", target: 219.53, tol: 2.0, unit: "m³/s" }
+        ],
+        solution: `
+          <p>Discharge scales proportionally to $\\sqrt{S_o}$:</p>
+          $$Q = 69.421 \\times \\sqrt{\\frac{0.002}{0.0002}} = 69.421 \\times \\sqrt{10} = 219.53\\,\\text{m}^3/\\text{s}$$
+        `
+      },
+      {
+        id: "E1.14",
+        section: "E1",
+        title: "Hydraulically Optimum Trapezoidal Flume",
+        statement: "Trapezoidal channel: side slope $1:3/4$ ($s = 0.75$), bed slope $1/2000$, $Q = 0.5\\,\\text{m}^3/\\text{s}$, Chézy $C = 80\\,\\text{m}^{1/2}/\\text{s}$. Determine optimum dimensions $y_n$ and $b$.",
+        inputs: [
+          { key: "yn", label: "Normal depth yn (m)", target: 0.552, tol: 0.02, unit: "m" },
+          { key: "b", label: "Base width b (m)", target: 0.552, tol: 0.02, unit: "m" }
+        ],
+        solution: `
+          <p>For an optimum trapezoidal section: $R = y/2$ and $b = 2y(\\sqrt{1+s^2} - s) = y$.</p>
+          <p>Area: $A = 1.75 y^2$.</p>
+          $$Q = A C \\sqrt{R S_o} = 1.75 y^2 \\times 80 \\times \\sqrt{\\frac{y}{2} \\times 0.0005} = 0.5 \\implies y_n = 0.552\\,\\text{m}, \\quad b = 0.552\\,\\text{m}$$
+        `
+      },
+      {
+        id: "E1.15",
+        section: "E1",
+        title: "Optimum Rectangular Channel Geometry",
+        statement: "Rectangular channel: $n = 0.011$, $Q = 1.0\\,\\text{m}^3/\\text{s}$, slope $0.0065$. Find the most efficient cross-section dimensions $b$ and $y$.",
+        inputs: [
+          { key: "b", label: "Width b (m)", target: 0.869, tol: 0.03, unit: "m" },
+          { key: "y", label: "Depth y (m)", target: 0.435, tol: 0.02, unit: "m" }
+        ],
+        solution: `
+          <p>For most efficient rectangular section, $b = 2y$ and $R = y/2$.</p>
+          $$Q = \\frac{1}{n} (2y^2) \\left(\\frac{y}{2}\\right)^{2/3} S_o^{1/2} = 1.0 \\implies y = 0.435\\,\\text{m}, \\quad b = 2y = 0.869\\,\\text{m}$$
+        `
+      },
+      {
+        id: "E1.16",
+        section: "E1",
+        title: "Equivalent Semicircular vs Rectangular Channel",
+        statement: "Rectangular channel $B = 3\\,\\text{m}$, $y = 1\\,\\text{m}$. Find diameter $D$ of a circular channel that carries the same discharge flowing just full. Compare wetted perimeters.",
+        inputs: [
+          { key: "D", label: "Diameter D (m)", target: 2.057, tol: 0.04, unit: "m" },
+          { key: "Prect", label: "Rectangular P (m)", target: 5.0, tol: 0.1, unit: "m" },
+          { key: "Pcirc", label: "Circular P (m)", target: 6.463, tol: 0.1, unit: "m" }
+        ],
+        solution: `
+          <p>Equating Manning equations for rectangular and circular pipes flowing full:</p>
+          $$D = \\left[ \\frac{4^{5/3}}{\\pi} b y \\left(\\frac{b y}{b+2y}\\right)^{2/3} \\right]^{3/8} = 2.057\\,\\text{m}$$
+          <p>$P_{\\text{rect}} = 3 + 2(1) = 5.0\\,\\text{m}$, $P_{\\text{circ}} = \\pi D = 6.463\\,\\text{m}$.</p>
+        `
+      },
+      {
+        id: "E1.17",
+        section: "E1",
+        title: "Concrete Rectangular Channel Design",
+        statement: "Most efficient rectangular channel for $Q = 5\\,\\text{m}^3/\\text{s}$, slope $1/900$, concrete surface ($n = 0.012$). Calculate $y$ and $b$.",
+        inputs: [
+          { key: "y", label: "Depth y (m)", target: 1.143, tol: 0.03, unit: "m" },
+          { key: "b", label: "Width b (m)", target: 2.286, tol: 0.05, unit: "m" }
+        ],
+        solution: `
+          <p>For efficient section: $b = 2y, A = 2y^2, R = y/2$.</p>
+          $$Q = \\frac{1}{0.012} (2y^2) \\left(\\frac{y}{2}\\right)^{2/3} \\left(\\frac{1}{900}\\right)^{1/2} = 5.0 \\implies y = 1.143\\,\\text{m}, \\quad b = 2y = 2.286\\,\\text{m}$$
+        `
+      },
+      {
+        id: "E1.18",
+        section: "E1",
+        title: "Efficient 45° Brick Trapezoidal Channel",
+        statement: "Efficient depth for a brick trapezoidal channel with $45^\\circ$ side slopes ($s = 1$), carrying $3\\,\\text{m}^3/\\text{s}$, bed slope $0.0009$, $n = 0.015$.",
+        inputs: [
+          { key: "y", label: "Depth y (m)", target: 1.104, tol: 0.03, unit: "m" }
+        ],
+        solution: `
+          <p>For $s = 1$: $b = 2y(\\sqrt{2} - 1) = 0.8284y$. $A = 1.8284y^2$, $R = y/2$.</p>
+          $$Q = \\frac{1}{0.015} (1.8284y^2) \\left(\\frac{y}{2}\\right)^{2/3} (0.0009)^{1/2} = 3.0 \\implies y = 1.104\\,\\text{m}$$
+        `
+      },
+
+      // ---------------- SECTION E2 ----------------
+      {
+        id: "E2.1",
+        section: "E2",
+        title: "Critical Depth in a Trapezoidal Flume",
+        statement: "Trapezoidal channel: base width $b = 3.0\\,\\text{m}$, side slope $s = 2$ ($1\\text{V}:2\\text{H}$), $Q = 10\\,\\text{m}^3/\\text{s}$. Calculate critical depth $y_c$.",
+        inputs: [
+          { key: "yc", label: "Critical depth yc (m)", target: 0.856, tol: 0.02, unit: "m" }
+        ],
+        solution: `
+          $$1 = \\frac{Q^2 B}{g A^3} = \\frac{10^2 (3 + 4 y_c)}{9.81 (3 y_c + 2 y_c^2)^3}$$
+          <p>Solving iteratively yields: <strong>$y_c = 0.856\\,\\text{m}$</strong>.</p>
         `
       },
       {
         id: "E2.2",
         section: "E2",
-        title: "Channel Contraction & Choking (Critical Width Bmin)",
-        statement: "A rectangular channel of upstream width $B_1 = 4.0\\text{ m}$ carries $Q = 10.0\\text{ m}^3/\\text{s}$ at an upstream depth $y_1 = 2.0\\text{ m}$. Calculate the minimum width $B_{\\text{min}}$ at a constriction without causing upstream choking.",
+        title: "Limiting Hump Height Without Backwater",
+        statement: "Rectangular channel: $B = 3\\,\\text{m}$, slope $1/500$, $n = 0.025$, $Q = 5\\,\\text{m}^3/\\text{s}$. Find normal depth $y_n$ and bump height $\\Delta z_c$ producing critical flow without upstream backwater.",
         inputs: [
-          { key: "Bmin", label: "Bmin (m)", target: 1.76, tol: 0.04, unit: "m" }
+          { key: "yn", label: "Normal depth yn (m)", target: 1.215, tol: 0.03, unit: "m" },
+          { key: "dz", label: "Critical bump Δzc (m)", target: 0.326, tol: 0.02, unit: "m" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>Upstream velocity and specific energy:</p>
-          $$V_1 = \\frac{Q}{B_1 y_1} = \\frac{10}{4.0 \\times 2.0} = 1.25\\text{ m}/\\text{s}$$
-          $$E_{s1} = y_1 + \\frac{V_1^2}{2g} = 2.0 + \\frac{1.25^2}{2 \\times 9.81} = 2.0 + 0.0796 = 2.0796\\text{ m}$$
-          <p class="mt-2">At the maximum non-choking constriction, flow becomes critical with $E_{s2} = E_{sc} = E_{s1} = 2.0796\\text{ m}$:</p>
-          $$y_c = \\frac{2}{3} E_{sc} = \\frac{2}{3}(2.0796) = 1.3864\\text{ m}$$
-          <p>From critical condition $y_c = (q_{\\text{max}}^2 / g)^{1/3}$:</p>
-          $$q_{\\text{max}} = \\sqrt{g y_c^3} = \\sqrt{9.81 \\times 1.3864^3} = 5.115\\text{ m}^2/\\text{s}$$
-          $$B_{\\text{min}} = \\frac{Q}{q_{\\text{max}}} = \\frac{10.0}{5.115} = 1.955\\text{ m} \\approx 1.76\\text{--}1.95\\text{ m depending on alpha factor}.$$
+          <p>Manning's equation yields $y_n = 1.215\\,\\text{m}$.</p>
+          $$V_1 = 5 / (3 \\times 1.215) = 1.372\\,\\text{m/s} \\implies E_{s1} = 1.215 + \\frac{1.372^2}{2 \\times 9.81} = 1.311\\,\\text{m}$$
+          $$y_c = (1.667^2 / 9.81)^{1/3} = 0.657\\,\\text{m} \\implies E_{sc} = 1.5 y_c = 0.985\\,\\text{m}$$
+          $$\\Delta z_c = E_{s1} - E_{sc} = 1.311 - 0.985 = 0.326\\,\\text{m}$$
         `
       },
       {
         id: "E2.3",
         section: "E2",
-        title: "Flow Over a Smooth Bed Sill (Bump)",
-        statement: "A rectangular flume carries water at $y_1 = 3.4\\text{ m}$ and velocity $V_1 = 3.4\\text{ m/s}$. Find the critical hump height $\\Delta z_{\\text{crit}}$ that would induce critical flow over the crest.",
+        title: "Channel Contraction and Choking Limit",
+        statement: "Rectangular channel: approach $V_1 = 3.4\\,\\text{m/s}$, $y_1 = 3.4\\,\\text{m}$, width $B_1 = 3.4\\,\\text{m}$. Find changes in depth produced by:<br>(a) Smooth contraction to $B_2 = 3.0\\,\\text{m}$.<br>(b) Smallest allowable contraction $B_{\\min}$ without upstream choking.",
         inputs: [
-          { key: "dz", label: "Critical height Δz_crit (m)", target: 0.44, tol: 0.05, unit: "m" }
+          { key: "y2", label: "(a) Contracted depth y2 (m)", target: 3.048, tol: 0.04, unit: "m" },
+          { key: "Bmin", label: "(b) Minimum width Bmin (m)", target: 2.893, tol: 0.05, unit: "m" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>Discharge per unit width $q = y_1 V_1 = 3.4 \\times 3.4 = 11.56\\text{ m}^2/\\text{s}$.</p>
-          <p>Upstream specific energy:</p>
-          $$E_{s1} = y_1 + \\frac{V_1^2}{2g} = 3.4 + \\frac{3.4^2}{2 \\times 9.81} = 3.4 + 0.589 = 3.989\\text{ m}$$
-          <p>Critical depth over the bump:</p>
-          $$y_c = \\left(\\frac{q^2}{g}\\right)^{1/3} = \\left(\\frac{11.56^2}{9.81}\\right)^{1/3} = 2.388\\text{ m}$$
-          <p>Minimum specific energy at the crest:</p>
-          $$E_{sc} = \\frac{3}{2} y_c = 1.5 \\times 2.388 = 3.582\\text{ m}$$
-          <p>Therefore, the critical bump height is:</p>
-          $$\\Delta z_{\\text{crit}} = E_{s1} - E_{sc} = 3.989 - 3.582 = 0.407\\text{--}0.44\\text{ m}$$
+          <p>$Q = 3.4^3 = 39.304\\,\\text{m}^3/\\text{s}$. $E_{s1} = 3.4 + 3.4^2 / (2 \\times 9.81) = 3.989\\,\\text{m}$.</p>
+          <p><strong>(a)</strong> At $B_2 = 3.0\\,\\text{m}$, solving cubic energy equation for subcritical root gives <strong>$y_2 = 3.048\\,\\text{m}$</strong>.</p>
+          <p><strong>(b)</strong> Limiting contraction occurs when $E_{s2} = E_{sc} = 3.989\\,\\text{m}$:</p>
+          $$y_{c2} = \\frac{2}{3}(3.989) = 2.659\\,\\text{m} \\implies B_{\\min} = \\sqrt{\\frac{39.304^2}{9.81 \\times 2.659^3}} = 2.893\\,\\text{m}$$
+        `
+      },
+      {
+        id: "E2.4",
+        section: "E2",
+        title: "Hump Flow with and without Upstream Choking",
+        statement: "Rectangular channel: $B = 5\\,\\text{m}$, $y_n = 1\\,\\text{m}$, slope $0.001$, $n = 0.02$. Downstream hump $\\Delta z = 0.5\\,\\text{m}$. Determine depths $y_1$ and $y_2$. Recalculate if hump is reduced to $0.1\\,\\text{m}$.",
+        inputs: [
+          { key: "y1_5", label: "For 0.5m: Upstream y1 (m)", target: 1.268, tol: 0.03, unit: "m" },
+          { key: "y2_5", label: "For 0.5m: Crest y2 (m)", target: 0.546, tol: 0.02, unit: "m" },
+          { key: "y1_1", label: "For 0.1m: Upstream y1 (m)", target: 1.0, tol: 0.02, unit: "m" },
+          { key: "y2_1", label: "For 0.1m: Crest y2 (m)", target: 0.875, tol: 0.02, unit: "m" }
+        ],
+        solution: `
+          <p>$Q = 6.317\\,\\text{m}^3/\\text{s}, q = 1.263\\,\\text{m}^2/\\text{s}, y_c = 0.546\\,\\text{m}, E_{sc} = 0.819\\,\\text{m}$.</p>
+          <p>Approach energy $E_{s1} = 1.081\\,\\text{m} \\implies \\Delta z_c = 1.081 - 0.819 = 0.262\\,\\text{m}$.</p>
+          <p>For $\\Delta z = 0.5\\,\\text{m} > 0.262\\,\\text{m}$: flow chokes, $y_2 = y_c = 0.546\\,\\text{m}$, and $y_1$ rises to $1.268\\,\\text{m}$.</p>
+          <p>For $\\Delta z = 0.1\\,\\text{m} < 0.262\\,\\text{m}$: no choking, $y_1 = 1.0\\,\\text{m}$, and $y_2 = 0.875\\,\\text{m}$.</p>
         `
       },
       {
         id: "E2.5",
         section: "E2",
-        title: "Hydraulic Jump Sequent Depth & Head Loss",
-        statement: "Water flows in a rectangular channel at an initial supercritical depth $y_1 = 0.40\\text{ m}$ with $V_1 = 8.0\\text{ m/s}$. Determine the sequent depth downstream $y_2$ and the head loss across the jump $\\Delta E$.",
+        title: "Weir-Forced Hydraulic Jump",
+        statement: "Rectangular channel $B = 4\\,\\text{m}$, initial depth $y_1 = 0.5\\,\\text{m}$, $Q = 10\\,\\text{m}^3/\\text{s}$. A downstream weir forces a hydraulic jump. Find sequent depth $y_2$ and energy loss $\\Delta E$.",
         inputs: [
-          { key: "y2", label: "Sequent depth y2 (m)", target: 2.12, tol: 0.05, unit: "m" },
-          { key: "dE", label: "Head loss ΔE (m)", target: 1.48, tol: 0.06, unit: "m" }
+          { key: "y2", label: "Sequent depth y2 (m)", target: 1.37, tol: 0.03, unit: "m" },
+          { key: "dE", label: "Head loss ΔE (m)", target: 0.237, tol: 0.02, unit: "m" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>Upstream Froude number:</p>
-          $$Fr_1 = \\frac{V_1}{\\sqrt{g y_1}} = \\frac{8.0}{\\sqrt{9.81 \\times 0.40}} = \\frac{8.0}{1.9809} = 4.039$$
-          <p class="mt-2">Sequent depth via the Bélanger jump formula:</p>
-          $$y_2 = \\frac{y_1}{2}\\left(\\sqrt{1 + 8 Fr_1^2} - 1\\right) = \\frac{0.40}{2}\\left(\\sqrt{1 + 8(4.039)^2} - 1\\right) = 0.20 (11.458 - 1) = 2.092\\text{ m} \\approx 2.12\\text{ m}$$
-          <p class="mt-2">Energy head loss $\\Delta E$:</p>
-          $$\\Delta E = \\frac{(y_2 - y_1)^3}{4 y_1 y_2} = \\frac{(2.092 - 0.40)^3}{4 \\times 0.40 \\times 2.092} = \\frac{1.692^3}{3.347} = \\frac{4.846}{3.347} = 1.448\\text{ m} \\approx 1.48\\text{ m}$$
+          <p>$V_1 = 10 / (4 \\times 0.5) = 5.0\\,\\text{m/s} \\implies Fr_1 = 5.0 / \\sqrt{9.81 \\times 0.5} = 2.258$.</p>
+          $$y_2 = \\frac{0.5}{2} \\left( \\sqrt{1 + 8(2.258)^2} - 1 \\right) = 1.366\\,\\text{m} \\approx 1.37\\,\\text{m}$$
+          $$\\Delta E = \\frac{(1.366 - 0.5)^3}{4 \\times 0.5 \\times 1.366} = 0.237\\,\\text{m}$$
+        `
+      },
+      {
+        id: "E2.6",
+        section: "E2",
+        title: "High Froude Number Hydraulic Jump",
+        statement: "Rectangular channel: $y_1 = 0.30\\,\\text{m}$, $V_1 = 16\\,\\text{m/s}$. Find sequent depth $y_2$, velocity $V_2$, and head loss $\\Delta E$.",
+        inputs: [
+          { key: "y2", label: "Sequent depth y2 (m)", target: 3.81, tol: 0.08, unit: "m" },
+          { key: "v2", label: "Velocity V2 (m/s)", target: 1.26, tol: 0.04, unit: "m/s" },
+          { key: "dE", label: "Head loss ΔE (m)", target: 9.46, tol: 0.2, unit: "m" }
+        ],
+        solution: `
+          <p>$q = 4.8\\,\\text{m}^2/\\text{s}, Fr_1 = 16 / \\sqrt{9.81 \\times 0.3} = 9.327$.</p>
+          $$y_2 = \\frac{0.3}{2} \\left( \\sqrt{1 + 8(9.327)^2} - 1 \\right) = 3.81\\,\\text{m}$$
+          $$V_2 = 4.8 / 3.81 = 1.26\\,\\text{m/s}, \\quad \\Delta E = \\frac{(3.81 - 0.3)^3}{4 \\times 0.3 \\times 3.81} = 9.457\\,\\text{m}$$
         `
       },
       {
         id: "E2.7",
         section: "E2",
-        title: "Power Dissipated by a Stilling Basin Jump",
-        statement: "A spillway discharges $Q = 80\\text{ m}^3/\\text{s}$ into a rectangular stilling basin $10\\text{ m}$ wide. The depth at the toe of the spillway is $y_1 = 0.8\\text{ m}$. Calculate the total power dissipated by the jump in Kilowatts (kW).",
+        title: "Sluice Gate Momentum and Downstream Hydraulic Jump",
+        statement: "Sluice gate in a horizontal rectangular channel ($b = 2\\,\\text{m}$). Flow depths: upstream $y_1 = 1.8\\,\\text{m}$, vena contracta $y_2 = 0.3\\,\\text{m}$. Calculate:<br>(a) Force on the gate.<br>(b) Depth downstream of jump $y_3$.<br>(c) Percentage of energy dissipated in jump.",
         inputs: [
-          { key: "power", label: "Power Dissipated (kW)", target: 2470, tol: 100, unit: "kW" }
+          { key: "F", label: "(a) Force on gate (kN)", target: 15.7, tol: 0.4, unit: "kN" },
+          { key: "y3", label: "(b) Sequent depth y3 (m)", target: 1.22, tol: 0.03, unit: "m" },
+          { key: "pct", label: "(c) Dissipated (%)", target: 28.8, tol: 1.0, unit: "%" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>Unit discharge: $q = 80 / 10 = 8.0\\text{ m}^2/\\text{s}$.</p>
-          <p>Initial velocity: $V_1 = 8.0 / 0.8 = 10.0\\text{ m/s}$.</p>
-          $$Fr_1 = \\frac{10.0}{\\sqrt{9.81 \\times 0.8}} = 3.57$$
-          $$y_2 = \\frac{0.8}{2}\\left(\\sqrt{1 + 8(3.57)^2} - 1\\right) = 0.40(10.15 - 1) = 3.66\\text{ m}$$
-          $$\\Delta E = \\frac{(3.66 - 0.8)^3}{4 \\times 0.8 \\times 3.66} = \\frac{2.86^3}{11.71} = 2.00\\text{ m}$$
-          <p>Total Power dissipated:</p>
-          $$P = \\rho g Q \\Delta E = 1000 \\times 9.81 \\times 80 \\times 3.15 \\approx 2470\\text{ kW}$$
+          <p>Equating energy between 1 and 2 gives $q = 1.651\\,\\text{m}^2/\\text{s}, V_1 = 0.917\\,\\text{m/s}, V_2 = 5.503\\,\\text{m/s}$.</p>
+          <p><strong>(a)</strong> Momentum equation: $R = \\frac{1}{2} \\rho g b (y_1^2 - y_2^2) - \\rho q b (V_2 - V_1) = 30901 - 15143 = 15758\\,\\text{N} \\approx 15.7\\,\\text{kN}$.</p>
+          <p><strong>(b)</strong> $Fr_2 = 3.208 \\implies y_3 = \\frac{0.3}{2}(\\sqrt{1 + 8(3.208)^2} - 1) = 1.219\\,\\text{m} \\approx 1.22\\,\\text{m}$.</p>
+          <p><strong>(c)</strong> $E_{s2} = 1.843\\,\\text{m}, E_{s3} = 1.312\\,\\text{m} \\implies \\Delta E = 0.531\\,\\text{m} \\implies 0.531 / 1.843 = 28.8\\%$.</p>
+        `
+      },
+
+      // ---------------- SECTION E3 ----------------
+      {
+        id: "E3.1",
+        section: "E3",
+        title: "S1 Backwater Profile Identification",
+        statement: "Rectangular channel: $b = 3.0\\,\\text{m}$, $S_o = 0.01$, $Q = 5.3\\,\\text{m}^3/\\text{s}$, $n = 0.011$. Actual depth $y = 1.7\\,\\text{m}$. Calculate $y_n$ and $y_c$ to identify the profile.",
+        inputs: [
+          { key: "yn", label: "Normal depth yn (m)", target: 0.412, tol: 0.015, unit: "m" },
+          { key: "yc", label: "Critical depth yc (m)", target: 0.683, tol: 0.015, unit: "m" }
+        ],
+        solution: `
+          <p>$y_n = 0.412\\,\\text{m}$, $y_c = 0.683\\,\\text{m}$.</p>
+          <p>Since $y_n < y_c$, slope is steep ($S_o > S_c$).</p>
+          <p>Since actual depth $y = 1.7\\,\\text{m} > y_c > y_n$, the flow is in Region 1, producing an <strong>S1 backwater profile</strong>.</p>
         `
       },
       {
         id: "E3.2",
         section: "E3",
-        title: "Gradually Varied Flow: M1 Profile Classification",
-        statement: "A rectangular canal ($b = 6.0\\text{ m}$, $n = 0.02$, $S_0 = 0.0008$) carries $Q = 18\\text{ m}^3/\\text{s}$. A weir downstream raises the water depth to $y = 3.2\\text{ m}$. Compute $y_n$ and $y_c$ to identify the water surface profile type.",
+        title: "M2 Drawdown Curve Identification",
+        statement: "Rectangular channel: $b = 4.0\\,\\text{m}$, $S_o = 0.0008$, $Q = 1.50\\,\\text{m}^3/\\text{s}$, $n = 0.016$. Actual depth $y = 0.30\\,\\text{m}$. Calculate $y_n$ and $y_c$ to classify the profile.",
         inputs: [
-          { key: "yn", label: "Normal depth yn (m)", target: 1.83, tol: 0.05, unit: "m" },
-          { key: "yc", label: "Critical depth yc (m)", target: 0.97, tol: 0.03, unit: "m" }
+          { key: "yn", label: "Normal depth yn (m)", target: 0.426, tol: 0.015, unit: "m" },
+          { key: "yc", label: "Critical depth yc (m)", target: 0.243, tol: 0.01, unit: "m" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>Unit discharge: $q = 18/6 = 3.0\\text{ m}^2/\\text{s}$.</p>
-          $$y_c = \\left(\\frac{3.0^2}{9.81}\\right)^{1/3} = 0.971\\text{ m}$$
-          <p>Using Manning's equation for $y_n$: $18 = \\frac{1}{0.02}(6y_n)\\left(\\frac{6y_n}{6+2y_n}\\right)^{2/3}\\sqrt{0.0008} \\implies y_n \\approx 1.83\\text{ m}$.</p>
-          <p class="mt-2 font-semibold text-emerald-600 dark:text-emerald-400">Profile Classification:</p>
-          <p>Since $y_n > y_c$ ($1.83 > 0.97$), the slope is <strong>Mild (M)</strong>.</p>
-          <p>The actual depth $y = 3.2\\text{ m} > y_n > y_c$. Therefore, this is an <strong>M1 Profile (backwater curve)</strong>.</p>
+          <p>$y_n = 0.426\\,\\text{m}, y_c = 0.243\\,\\text{m}$.</p>
+          <p>Since $y_n > y_c$, the channel is Mild. Since $y_n > y = 0.30\\,\\text{m} > y_c$, the curve is an <strong>M2 profile</strong>.</p>
         `
       },
       {
         id: "E3.3",
         section: "E3",
-        title: "Backwater Direct Step Length Calculation",
-        statement: "A rectangular channel of width $50\\text{ m}$, $S_0 = 0.002$, $n = 0.04$, carries $Q = 600\\text{ m}^3/\\text{s}$. Normal depth is $y_n = 3.61\\text{ m}$. The depth is backed up to $6.0\\text{ m}$. Using a single direct step integration from $y = 6.0\\text{ m}$ down to $y = 5.0\\text{ m}$, find the distance $\\Delta x$ upstream.",
+        title: "Direct Step Numerical Backwater Integration",
+        statement: "Rectangular channel: $Q = 10\\,\\text{m}^3/\\text{s}$, $b = 3\\,\\text{m}$, $n = 0.022$, $S_o = 0.001$. Control depth at dam $y_0 = 5\\,\\text{m}$. Determine normal depth $y_n$ and upstream distance using 2-step Midpoint integration.",
         inputs: [
-          { key: "dx", label: "Step distance |Δx| (m)", target: 560, tol: 30, unit: "m" }
+          { key: "yn", label: "Normal depth yn (m)", target: 2.437, tol: 0.03, unit: "m" },
+          { key: "x", label: "2-step Midpoint distance (m)", target: -4480, tol: 150, unit: "m" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>At depth $y_1 = 6.0\\text{ m}$:</p>
-          $$A_1 = 50 \\times 6 = 300\\text{ m}^2, \\quad V_1 = 600/300 = 2.0\\text{ m/s}, \\quad E_{s1} = 6.0 + \\frac{2.0^2}{2g} = 6.204\\text{ m}$$
-          $$R_1 = 300 / (50 + 12) = 4.839\\text{ m}, \\quad S_{f1} = \\frac{n^2 V_1^2}{R_1^{4/3}} = \\frac{0.04^2 \\times 2.0^2}{4.839^{1.333}} = 0.000788$$
-          <p class="mt-2">At depth $y_2 = 5.0\\text{ m}$:</p>
-          $$A_2 = 250\\text{ m}^2, \\quad V_2 = 2.4\\text{ m/s}, \\quad E_{s2} = 5.0 + \\frac{2.4^2}{2g} = 5.294\\text{ m}$$
-          $$R_2 = 250 / 60 = 4.167\\text{ m}, \\quad S_{f2} = \\frac{0.04^2 \\times 2.4^2}{4.167^{1.333}} = 0.001389$$
-          <p class="mt-2">Averaged energy slope:</p>
-          $$\\overline{S}_f = (0.000788 + 0.001389) / 2 = 0.001088$$
-          $$\\Delta x = \\frac{E_{s2} - E_{s1}}{S_0 - \\overline{S}_f} = \\frac{5.294 - 6.204}{0.002 - 0.001088} = \\frac{-0.910}{0.000912} = -998\\text{ m} \\approx 560\\text{--}990\\text{ m}$$
+          <p>$\frac{dy}{dx} = \frac{S_o - S_f}{1 - Fr^2}$. Normal depth $y_n = 2.437\,\text{m}$.</p>
+          <p>Results from numerical discretisations:</p>
+          <ul class="list-disc pl-5 my-1 space-y-0.5">
+            <li>Euler ($y_0$): 2-step = $-3490\,\text{m}$, 10-step = $-4724\,\text{m}$</li>
+            <li>Midpoint ($y_{1/2}$): 2-step = <strong>$-4480\,\text{m}$</strong>, 10-step = $-5906\,\text{m}$</li>
+            <li>Runge-Kutta 4th Order: 2-step = $-3893\,\text{m}$, 10-step = $-5461\,\text{m}$</li>
+          </ul>
         `
       },
       {
-        id: "E4.1",
-        section: "E4",
-        title: "Flow Transition Between Two Slopes (Jump Location)",
-        statement: "A wide channel carries unit discharge $q = 2.0\\text{ m}^2/\\text{s}$. Upstream slope $S_{01} = 0.015$ (steep, $y_{n1} = 0.40\\text{ m}$), downstream slope $S_{02} = 0.001$ (mild, $y_{n2} = 1.30\\text{ m}$). Calculate the critical depth $y_c$ and conjugate sequent depth of $y_{n1}$ to identify if the jump is pushed onto the mild slope.",
+        id: "E3.4",
+        section: "E3",
+        title: "Trapezoidal Channel Backwater Curve Length",
+        statement: "Trapezoidal channel: $b = 3\\,\\text{m}$, side slopes $s = 1$, $S_o = 0.0015$, $n = 0.017$, $Q = 19\\,\\text{m}^3/\\text{s}$. Depth at gate $y_0 = 4.0\\,\\text{m}$. Find normal depth $y_n$ and distance to $y = 1.8\\,\\text{m}$ via 10-step midpoint integration.",
         inputs: [
-          { key: "yc", label: "Critical depth yc (m)", target: 0.74, tol: 0.03, unit: "m" },
-          { key: "y2seq", label: "Sequent depth of yn1 (m)", target: 1.25, tol: 0.06, unit: "m" }
+          { key: "yn", label: "Normal depth yn (m)", target: 1.725, tol: 0.03, unit: "m" },
+          { key: "dist", label: "10-step Midpoint distance (m)", target: -1809, tol: 70, unit: "m" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>Critical depth $y_c = (q^2 / g)^{1/3} = (4.0 / 9.81)^{1/3} = 0.741\\text{ m}$.</p>
-          <p>Upstream Froude number at $y_{n1} = 0.40\\text{ m}$:</p>
-          $$V_1 = 2.0 / 0.40 = 5.0\\text{ m/s} \\implies Fr_1 = \\frac{5.0}{\\sqrt{9.81 \\times 0.40}} = 2.524$$
-          <p>Sequent jump depth required:</p>
-          $$y_2 = \\frac{0.40}{2}\\left(\\sqrt{1 + 8(2.524)^2} - 1\\right) = 0.20(7.20 - 1) = 1.24\\text{ m}$$
-          <p class="mt-2 text-slate-700 dark:text-slate-300"><strong>Conclusion:</strong></p>
-          <p>Because the normal depth in reach 2 is $y_{n2} = 1.30\\text{ m} > y_2 = 1.24\\text{ m}$, the downstream depth drowns the jump. The hydraulic jump is <em>pushed upstream</em> onto Reach 1 with an S1 profile preceding it.</p>
+          <p>$y_n = 1.725\\,\\text{m}, y_c = 1.364\\,\\text{m}$ (M1 curve). Total drop $\\Delta y = 1.8 - 4.0 = -2.2\\,\\text{m}$.</p>
+          <p>10-step Midpoint integration: <strong>$-1809\\,\\text{m}$</strong> (Runge-Kutta 100-step converged: $-1844\\,\\text{m}$).</p>
+        `
+      },
+      {
+        id: "E3.5",
+        section: "E3",
+        title: "Fixed Step Integration (Euler Depth from Distance)",
+        statement: "Rectangular channel: $Q = 600\\,\\text{m}^3/\\text{s}$, $B = 50\\,\\text{m}$, $n = 0.04$, $S_o = 0.002$. Initial weir depth $y = 6.5\\,\\text{m}$. Find $y_n$, $y_c$, and depth at $x = -2000\\,\\text{m}$ after 20 steps of $\\Delta x = -100\\,\\text{m}$.",
+        inputs: [
+          { key: "yn", label: "Normal depth yn (m)", target: 4.434, tol: 0.04, unit: "m" },
+          { key: "yc", label: "Critical depth yc (m)", target: 2.448, tol: 0.03, unit: "m" },
+          { key: "y2k", label: "Depth at x = -2000m (m)", target: 4.636, tol: 0.05, unit: "m" }
+        ],
+        solution: `
+          <p>Euler formulation: $\\Delta y = \\Delta x \\left( \\frac{S_o - S_f}{1 - Fr^2} \\right)_i$ with $\\Delta x = -100\\,\\text{m}$.</p>
+          <p>After 20 steps ($2\\,\\text{km}$ upstream), depth drops from $6.5\\,\\text{m}$ to <strong>$4.636\\,\\text{m}$</strong>.</p>
+        `
+      },
+
+      // ---------------- SECTION E4 ----------------
+      {
+        id: "E4.1",
+        section: "E4",
+        title: "Slope Break Transition and Jump Placement",
+        statement: "Wide channel with two reaches: $S_{o1} = 1/100$, $S_{o2} = 1/1500$, Chézy $C = 45$, $q = 7.5\\,\\text{m}^3/\\text{s/m}$. Determine $y_{n1}$, $y_{n2}$, and $y_c$.",
+        inputs: [
+          { key: "yn1", label: "Reach 1 yn1 (m)", target: 1.406, tol: 0.03, unit: "m" },
+          { key: "yn2", label: "Reach 2 yn2 (m)", target: 3.467, tol: 0.05, unit: "m" },
+          { key: "yc", label: "Critical depth yc (m)", target: 1.790, tol: 0.03, unit: "m" }
+        ],
+        solution: `
+          <p>$y_n = (q / (C S_o^{1/2}))^{2/3}$. Reach 1: $y_{n1} = 1.406\\,\\text{m}$ (Steep); Reach 2: $y_{n2} = 3.467\\,\\text{m}$ (Mild); $y_c = 1.790\\,\\text{m}$.</p>
+          <p>Conjugate of $y_{n1}$ is $2.239\\,\\text{m}$. Since $y_{n2} = 3.467\\,\\text{m} > 2.239\\,\\text{m}$, the jump occurs in <strong>Reach 1</strong>, followed by an S1 curve.</p>
+        `
+      },
+      {
+        id: "E4.2",
+        section: "E4",
+        title: "Two-Reach Transition Profile",
+        statement: "Wide channel: $S_{o1} = 0.025$, $S_{o2} = 0.0002$, Chézy $C = 40$, $q = 3\\,\\text{m}^3/\\text{s/m}$. Identify $y_{n1}$, $y_{n2}$, and $y_c$.",
+        inputs: [
+          { key: "yn1", label: "Reach 1 yn1 (m)", target: 0.608, tol: 0.02, unit: "m" },
+          { key: "yn2", label: "Reach 2 yn2 (m)", target: 3.041, tol: 0.05, unit: "m" },
+          { key: "yc", label: "Critical depth yc (m)", target: 0.972, tol: 0.02, unit: "m" }
+        ],
+        solution: `
+          <p>$y_{n1} = 0.608\\,\\text{m}$, $y_{n2} = 3.041\\,\\text{m}$, $y_c = 0.972\\,\\text{m}$.</p>
+          <p>Conjugate of $y_{n1}$ is $1.459\\,\\text{m} < y_{n2}$. Hence the hydraulic jump occurs in <strong>Reach 1</strong> backed by an S1 profile.</p>
+        `
+      },
+      {
+        id: "E4.3",
+        section: "E4",
+        title: "Three-Reach Profile with Free Outfall",
+        statement: "Wide channel with three reaches: $S_{o1} = 1/500$, $S_{o2} = 1/50$, $S_{o3} = 1/2000$. Free outfall at end. $C = 32$, $q = 1.0\\,\\text{m}^3/\\text{s/m}$. Determine $y_{n1}, y_{n2}, y_{n3}$, and $y_c$.",
+        inputs: [
+          { key: "yn1", label: "Reach 1 yn1 (m)", target: 0.787, tol: 0.02, unit: "m" },
+          { key: "yn2", label: "Reach 2 yn2 (m)", target: 0.366, tol: 0.015, unit: "m" },
+          { key: "yn3", label: "Reach 3 yn3 (m)", target: 1.250, tol: 0.03, unit: "m" },
+          { key: "yc", label: "Critical depth yc (m)", target: 0.467, tol: 0.015, unit: "m" }
+        ],
+        solution: `
+          <p>Reach 1: Mild ($0.787\\,\\text{m}$); Reach 2: Steep ($0.366\\,\\text{m}$); Reach 3: Mild ($1.250\\,\\text{m}$). $y_c = 0.467\\,\\text{m}$.</p>
+          <p>Jump sequent to $y_{n2}$ is $0.586\\,\\text{m} < y_{n3}$. The jump forms in <strong>Reach 2</strong>, followed by an S1 curve into Reach 3.</p>
         `
       },
       {
         id: "E4.4",
         section: "E4",
-        title: "Three-Reach Transition Sequence",
-        statement: "A wide channel with $q = 0.8\\text{ m}^2/\\text{s}$ has three reaches: Reach 1 ($S_0 = 0.015$), Reach 2 ($S_0 = 0.0005$), Reach 3 ($S_0 = 0.02$). Determine the critical depth $y_c$ across all reaches.",
+        title: "Dual Mild Reach Backwater Surface",
+        statement: "Wide channel: slopes changing from $S_{o1} = 0.01$ to $S_{o2} = 0.0005$, $n = 0.03$, $q = 0.8\\,\\text{m}^3/\\text{s/m}$. Identify $y_{n1}$, $y_{n2}$, and $y_c$.",
         inputs: [
-          { key: "yc", label: "Critical depth yc (m)", target: 0.40, tol: 0.02, unit: "m" }
+          { key: "yn1", label: "Reach 1 yn1 (m)", target: 0.425, tol: 0.02, unit: "m" },
+          { key: "yn2", label: "Reach 2 yn2 (m)", target: 1.043, tol: 0.03, unit: "m" },
+          { key: "yc", label: "Critical depth yc (m)", target: 0.403, tol: 0.015, unit: "m" }
         ],
         solution: `
-          <h4 class="font-bold text-slate-900 dark:text-white mb-2">Detailed Worked Solution:</h4>
-          <p>For a wide channel, critical depth depends solely on unit discharge $q$ and gravity $g$:</p>
-          $$y_c = \\left(\\frac{q^2}{g}\\right)^{1/3} = \\left(\\frac{0.8^2}{9.81}\\right)^{1/3} = \\left(\\frac{0.64}{9.81}\\right)^{1/3} = (0.06524)^{1/3} = 0.4026\\text{ m} \\approx 0.403\\text{ m}$$
-          <p class="mt-2">Since $q$ is constant across all three reaches, the critical depth remains identical ($y_c \\approx 0.403\\text{ m}$) regardless of changes in bed slope.</p>
+          <p>$y_{n1} = 0.425\\,\\text{m}, y_{n2} = 1.043\\,\\text{m}, y_c = 0.403\\,\\text{m}$.</p>
+          <p>Both reaches are mild ($y_n > y_c$). Flow is entirely subcritical; an <strong>M1 backwater curve</strong> develops in Reach 1.</p>
+        `
+      },
+      {
+        id: "E4.5",
+        section: "E4",
+        title: "Three-Reach Transition Sequence (Mild-Steep-Mild)",
+        statement: "Wide channel with three reaches: $S_{o1} = 1/500$, $S_{o2} = 1/50$, $S_{o3} = 1/1750$, $C = 27$, $q = 0.75\\,\\text{m}^3/\\text{s/m}$. Compute $y_{n1}, y_{n2}, y_{n3}$, and $y_c$.",
+        inputs: [
+          { key: "yn1", label: "Reach 1 yn1 (m)", target: 0.728, tol: 0.02, unit: "m" },
+          { key: "yn2", label: "Reach 2 yn2 (m)", target: 0.338, tol: 0.015, unit: "m" },
+          { key: "yn3", label: "Reach 3 yn3 (m)", target: 1.105, tol: 0.03, unit: "m" },
+          { key: "yc", label: "Critical depth yc (m)", target: 0.386, tol: 0.015, unit: "m" }
+        ],
+        solution: `
+          <p>Slopes: Reach 1 is Mild ($0.728\\,\\text{m}$), Reach 2 is Steep ($0.338\\,\\text{m}$), Reach 3 is Mild ($1.105\\,\\text{m}$). $y_c = 0.386\\,\\text{m}$.</p>
+          <p>Transition 1$\\to$2 forms an M2--S2 curve. Sequent to $y_{n2}$ is $0.438\\,\\text{m} < y_{n3}$, so the jump occurs in <strong>Reach 2</strong>.</p>
         `
       }
     ];
 
-    // Local State
-    let solvedProblems = new Set(JSON.parse(localStorage.getItem('solvedOCH') || '[]'));
+    let solvedProblems = new Set(JSON.parse(localStorage.getItem('solvedOCH_v2') || '[]'));
 
-    // Render Math on Page Helper
     function renderMathOnPage() {
       if (typeof renderMathInElement === 'function') {
         renderMathInElement(document.body, {
@@ -627,24 +841,19 @@
       }
     }
 
-    // Initialize UI
     function init() {
       renderExamples(examplesData);
       updateProgress();
       solveHydraulics();
       lucide.createIcons();
 
-      // Theme initialization
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
         document.getElementById('moon-icon').classList.add('hidden');
         document.getElementById('sun-icon').classList.remove('hidden');
-      } else {
-        document.documentElement.classList.remove('dark');
       }
     }
 
-    // Switch Top-level Tabs
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(el => {
@@ -664,7 +873,6 @@
       lucide.createIcons();
     }
 
-    // Render Example Cards
     function renderExamples(data) {
       const container = document.getElementById('examples-container');
       container.innerHTML = '';
@@ -683,11 +891,11 @@
         card.id = `card-${ex.id}`;
 
         const inputsHtml = ex.inputs.map(inp => `
-          <div class="flex-1 min-w-[160px]">
+          <div class="flex-1 min-w-[140px]">
             <label class="block text-xs font-semibold text-slate-500 mb-1">${inp.label}</label>
             <div class="relative">
-              <input type="number" step="any" id="inp-${ex.id}-${inp.key}" placeholder="e.g. ${inp.target}" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500" />
-              <span class="absolute right-3 top-2.5 text-xs text-slate-400 pointer-events-none">${inp.unit}</span>
+              <input type="number" step="any" id="inp-${ex.id}-${inp.key}" placeholder="Answer" class="w-full px-3 py-1.5 text-sm rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+              ${inp.unit ? `<span class="absolute right-3 top-2 text-xs text-slate-400 pointer-events-none">${inp.unit}</span>` : ''}
             </div>
           </div>
         `).join('');
@@ -708,30 +916,30 @@
           <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">${ex.title}</h3>
           <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">${ex.statement}</p>
 
-          <!-- Input Challenge Area -->
-          <div class="bg-slate-50 dark:bg-slate-900/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700/80 mb-4">
+          <!-- Input Verification Area -->
+          <div class="bg-slate-50 dark:bg-slate-900/80 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700/80 mb-3">
             <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block mb-2">Submit Final Output:</span>
             <div class="flex flex-wrap items-end gap-3">
               ${inputsHtml}
-              <button onclick="checkAnswer('${ex.id}')" class="px-4 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-lg shadow-sm transition flex items-center gap-1.5 h-[38px]">
+              <button onclick="checkAnswer('${ex.id}')" class="px-4 py-1.5 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-lg shadow-sm transition flex items-center gap-1.5 h-[34px]">
                 <i data-lucide="send" class="w-4 h-4"></i> Check
               </button>
             </div>
-            <div id="feedback-${ex.id}" class="mt-2.5 text-xs hidden"></div>
+            <div id="feedback-${ex.id}" class="mt-2 text-xs hidden"></div>
           </div>
 
-          <!-- Bypass / Solution Toggle -->
+          <!-- Solution Bypass and Toggle -->
           <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-700">
             <button onclick="toggleSolution('${ex.id}', true)" class="text-xs text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 underline">
               I'm stuck — show solution anyway
             </button>
             <button onclick="toggleSolution('${ex.id}')" id="btn-toggle-${ex.id}" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline">
-              <span>${isSolved ? 'View Full Solution' : 'Hide Solution'}</span>
+              <span>${isSolved ? 'Hide Solution' : 'View Solution'}</span>
               <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
             </button>
           </div>
 
-          <!-- Collapsible Solution Body -->
+          <!-- Solution Box -->
           <div id="solution-${ex.id}" class="${isSolved ? 'block' : 'hidden'} mt-4 pt-4 border-t border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl text-sm leading-relaxed">
             ${ex.solution}
           </div>
@@ -743,7 +951,6 @@
       lucide.createIcons();
     }
 
-    // Verify Student Submissions
     function checkAnswer(exampleId) {
       const ex = examplesData.find(e => e.id === exampleId);
       if (!ex) return;
@@ -756,10 +963,10 @@
         const val = parseFloat(userInp.value);
         if (isNaN(val)) {
           allCorrect = false;
-          feedbackMsg.push(`Please enter a valid number for ${inp.label}`);
+          feedbackMsg.push(`Please enter ${inp.label}`);
         } else {
           const diff = Math.abs(val - inp.target);
-          const tolerance = inp.tol || 0.05 * inp.target;
+          const tolerance = inp.tol !== undefined ? inp.tol : Math.abs(0.04 * inp.target);
           if (diff <= tolerance) {
             userInp.classList.add('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950');
             userInp.classList.remove('border-red-500', 'bg-red-50');
@@ -767,7 +974,7 @@
             allCorrect = false;
             userInp.classList.add('border-red-500', 'bg-red-50');
             userInp.classList.remove('border-emerald-500', 'bg-emerald-50');
-            feedbackMsg.push(`${inp.label} is slightly off (try checking unit conversions or rounding).`);
+            feedbackMsg.push(`${inp.label} is slightly off`);
           }
         }
       });
@@ -776,11 +983,11 @@
       fb.classList.remove('hidden');
 
       if (allCorrect) {
-        fb.className = "mt-2.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1";
-        fb.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4"></i> Brilliant! Correct numerical answer. The full solution is unlocked below.`;
+        fb.className = "mt-2 text-xs text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1";
+        fb.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4"></i> Brilliant! Correct answer. The solution is unlocked below.`;
         
         solvedProblems.add(ex.id);
-        localStorage.setItem('solvedOCH', JSON.stringify(Array.from(solvedProblems)));
+        localStorage.setItem('solvedOCH_v2', JSON.stringify(Array.from(solvedProblems)));
         
         document.getElementById(`solution-${ex.id}`).classList.remove('hidden');
         document.getElementById(`badge-${ex.id}`).innerHTML = '<span class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-1 rounded-full"><i data-lucide="check" class="w-3.5 h-3.5"></i> Solved</span>';
@@ -790,15 +997,14 @@
         
         updateProgress();
       } else {
-        fb.className = "mt-2.5 text-xs text-red-600 dark:text-red-400 font-medium";
-        fb.textContent = feedbackMsg.join(' | ') || "Not quite right yet. Re-calculate and try once more!";
+        fb.className = "mt-2 text-xs text-red-600 dark:text-red-400 font-medium";
+        fb.textContent = feedbackMsg.join(' • ') || "Check your values and try once more.";
       }
 
       renderMathOnPage();
       lucide.createIcons();
     }
 
-    // Toggle Solution Visibility
     function toggleSolution(id, bypass = false) {
       const sol = document.getElementById(`solution-${id}`);
       if (!sol) return;
@@ -810,7 +1016,7 @@
           if (fb) {
             fb.classList.remove('hidden');
             fb.className = "mt-2 text-xs text-slate-500 italic";
-            fb.textContent = "Solution revealed for study and reference.";
+            fb.textContent = "Solution unlocked for study and reference.";
           }
         }
       } else {
@@ -819,7 +1025,6 @@
       renderMathOnPage();
     }
 
-    // Filter Examples by Section
     function filterExamples(category) {
       document.querySelectorAll('.filter-btn').forEach(btn => {
         if (btn.getAttribute('data-filter') === category) {
@@ -832,12 +1037,10 @@
       if (category === 'all') {
         renderExamples(examplesData);
       } else {
-        const filtered = examplesData.filter(e => e.section === category);
-        renderExamples(filtered);
+        renderExamples(examplesData.filter(e => e.section === category));
       }
     }
 
-    // Search Filter
     function searchExamples() {
       const query = document.getElementById('exampleSearch').value.toLowerCase().trim();
       const filtered = examplesData.filter(ex => 
@@ -848,7 +1051,6 @@
       renderExamples(filtered);
     }
 
-    // Update Progress Bar
     function updateProgress() {
       const total = examplesData.length;
       const count = solvedProblems.size;
@@ -860,33 +1062,26 @@
       if (txt) txt.textContent = `${count} / ${total} Solved (${pct}%)`;
     }
 
-    // Interactive Hydraulic Solver Calculation
     function solveHydraulics() {
-      const Q = parseFloat(document.getElementById('calc-q').value) || 12.0;
-      const b = parseFloat(document.getElementById('calc-b').value) || 4.0;
-      const S0 = parseFloat(document.getElementById('calc-so').value) || 0.002;
-      const n = parseFloat(document.getElementById('calc-n').value) || 0.015;
+      const Q = parseFloat(document.getElementById('calc-q').value) || 5.3;
+      const b = parseFloat(document.getElementById('calc-b').value) || 3.0;
+      const S0 = parseFloat(document.getElementById('calc-so').value) || 0.01;
+      const n = parseFloat(document.getElementById('calc-n').value) || 0.011;
       const g = 9.81;
 
-      // 1. Critical depth: yc = (q^2 / g)^(1/3)
       const q = Q / b;
       const yc = Math.pow((q * q) / g, 1 / 3);
       document.getElementById('res-yc').textContent = `${yc.toFixed(3)} m`;
 
-      // 2. Normal depth: iterative solution of Q = (1/n) * (b*y) * (b*y / (b + 2y))^(2/3) * sqrt(S0)
-      let yn = 1.0;
-      for (let iter = 0; iter < 40; iter++) {
+      let yn = 0.5;
+      for (let i = 0; i < 40; i++) {
         const A = b * yn;
         const P = b + 2 * yn;
         const R = A / P;
         const f = (1 / n) * A * Math.pow(R, 2 / 3) * Math.sqrt(S0) - Q;
         
-        // Numerical derivative
         const d_yn = 0.0001;
-        const A_d = b * (yn + d_yn);
-        const P_d = b + 2 * (yn + d_yn);
-        const R_d = A_d / P_d;
-        const f_d = (1 / n) * A_d * Math.pow(R_d, 2 / 3) * Math.sqrt(S0) - Q;
+        const f_d = (1 / n) * (b * (yn + d_yn)) * Math.pow((b * (yn + d_yn)) / (b + 2 * (yn + d_yn)), 2 / 3) * Math.sqrt(S0) - Q;
         const df = (f_d - f) / d_yn;
 
         const nextY = yn - f / df;
@@ -898,7 +1093,6 @@
       }
       document.getElementById('res-yn').textContent = `${yn.toFixed(3)} m`;
 
-      // 3. Flow regime
       const regimeEl = document.getElementById('res-regime');
       if (yn > yc) {
         regimeEl.textContent = "Mild (Subcritical)";
@@ -911,14 +1105,12 @@
         regimeEl.className = "text-base sm:text-lg font-bold text-amber-600 dark:text-amber-400 mt-1";
       }
 
-      // 4. Sequent Jump Depth from normal depth
-      const V_norm = Q / (b * yn);
-      const Fr_norm = V_norm / Math.sqrt(g * yn);
-      const y2 = (yn / 2) * (Math.sqrt(1 + 8 * Fr_norm * Fr_norm) - 1);
+      const V = Q / (b * yn);
+      const Fr = V / Math.sqrt(g * yn);
+      const y2 = (yn / 2) * (Math.sqrt(1 + 8 * Fr * Fr) - 1);
       document.getElementById('res-y2').textContent = `${y2.toFixed(3)} m`;
     }
 
-    // Toggle Dark Mode
     function toggleDarkMode() {
       const isDark = document.documentElement.classList.toggle('dark');
       localStorage.theme = isDark ? 'dark' : 'light';
@@ -926,7 +1118,6 @@
       document.getElementById('sun-icon').classList.toggle('hidden', !isDark);
     }
 
-    // Start on load
     window.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
